@@ -2,7 +2,8 @@ const express = require("express");
 const { chats } = require("./data/data");
 const dotenv = require("dotenv");
 const data = require("./config/db");
-const userRoutes = require('./routes/userRoutes')
+const userRoutes = require('./routes/userRoutes');
+const { notFound, errorHandler } = require("./middleware/errorMiddleWare");
 dotenv.config();
 data();
 const app = express();
@@ -14,6 +15,8 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/user", userRoutes);
+app.use(notFound)
+app.use(errorHandler)
 
 // app.get("/api/chat", (req, res) => {
 //   res.send(chats);
