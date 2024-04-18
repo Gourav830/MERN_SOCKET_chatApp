@@ -10,6 +10,8 @@ import {
   Button,
 } from "@chakra-ui/react";
 import { status } from "init";
+import { Axios } from "axios";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 export default function SignUp() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -19,6 +21,7 @@ export default function SignUp() {
 
   const [show, setShow] = useState(false);
   const [loading, setLoading] = useState(false);
+  const history = useHistory();
   const toast = useToast();
   const postDetails = (pics) => {
     setLoading(true);
@@ -72,7 +75,42 @@ export default function SignUp() {
         isClosable: true,
         position: "bottom",
       });
+      setLoading(false);
+      return;
     }
+    if (password !== confirmPass) {
+      toast({
+        title: "Passwords don't match kindly re-enter",
+        status: "warning",
+        duration: 5000,
+        isClosable: true,
+        position: "bottom",
+      });
+      return;
+    }
+
+    try {
+      const config = {
+        headers: {
+          "Content-type": "application/json",
+        },
+      };
+      const { data } = await Axios.post(
+        "/api/user",
+        { name, email, password, pic },
+        config
+      );
+      toast({
+        title: "Registration Successful",
+        status: "success",
+        duration: 5000,
+        isClosable: true,
+        position: "bottom",
+      });
+      localStorage.setItem("userInfo", JSON.stringify(data));
+      setLoading(false);
+      history.push("/chats");
+    } catch (err) {}
   };
   return (
     <VStack spacing="5px">
