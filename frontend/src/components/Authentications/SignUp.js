@@ -9,7 +9,14 @@ import {
   InputRightElement,
   Button,
 } from "@chakra-ui/react";
+import { status } from "init";
 export default function SignUp() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPass, setConfirmPass] = useState("");
+  const [pics, setPics] = useState("");
+
   const [show, setShow] = useState(false);
   const [loading, setLoading] = useState(false);
   const toast = useToast();
@@ -36,6 +43,7 @@ export default function SignUp() {
       })
         .then((res) => res.json())
         .then((data) => {
+          setPics(data.url.toString());
           console.log(data.url.toString());
           setLoading(false);
         })
@@ -54,7 +62,18 @@ export default function SignUp() {
       });
     }
   };
-  const submitHandler = () => {};
+  const submitHandler = async () => {
+    setLoading(true);
+    if (!toast || !email || !password || !confirmPass) {
+      toast({
+        title: "Please Fill all the fields",
+        status: "warning",
+        duration: 5000,
+        isClosable: true,
+        position: "bottom",
+      });
+    }
+  };
   return (
     <VStack spacing="5px">
       <FormControl id="first-name" isRequired>
