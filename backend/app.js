@@ -2,12 +2,13 @@ const express = require("express");
 const { chats } = require("./data/data");
 const dotenv = require("dotenv");
 const data = require("./config/db");
-const userRoutes = require('./routes/userRoutes');
+const userRoutes = require("./routes/userRoutes");
+const chatRoutes = require('./routes/chatRoutes')
 const { notFound, errorHandler } = require("./middleware/errorMiddleWare");
 dotenv.config();
 data();
 const app = express();
-app.use(express.json())
+app.use(express.json());
 const PORT = process.env.PORT || 3000;
 
 app.get("/", (req, res) => {
@@ -15,8 +16,9 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/user", userRoutes);
-app.use(notFound)
-app.use(errorHandler)
+app.use("/api/chats", chatRoutes);
+app.use(notFound);
+app.use(errorHandler);
 
 // app.get("/api/chat", (req, res) => {
 //   res.send(chats);
