@@ -1,4 +1,4 @@
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { useHistory } from "react-router-dom";
 
 const { createContext, useContext, useState, useEffect } = require("react");
 
@@ -20,6 +20,6 @@ const ChatProvider = ({ children }) => {
   );
 };
 export const ChatState = () => {
-  useContext(ChatContext);
+  return useContext(ChatContext);
 };
 export default ChatProvider;

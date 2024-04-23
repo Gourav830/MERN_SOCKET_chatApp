@@ -1,7 +1,9 @@
-import React from 'react'
+import React from "react";
 
 export default function SideDrawer() {
   return (
-    <div>SideDrawer</div>
-  )
+    <div style={{ color: "red" }}>
+      SideDrawer
+    </div>
+  );
 }
