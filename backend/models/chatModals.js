@@ -31,5 +31,5 @@ const chatModal = mongoose.Schema({
 },{
     timestamps:true,
 });
-const Chat = mongoose.model("Chat",chatModel);
+const Chat = mongoose.model("Chat",chatModal);
 module.exports = Chat
