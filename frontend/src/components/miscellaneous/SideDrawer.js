@@ -1,5 +1,5 @@
 import { Box, Button, Tooltip } from "@chakra-ui/react";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 
 function SideDrawer() {
@@ -9,10 +9,15 @@ function SideDrawer() {
   const [loadingChat, setLoadingChat] = useState();
   return (
     <>
-      <Box></Box>
-      <Button varient="ghost">
-      < icon="fa-solid fa-magnifying-glass" />
-      </Button>
+      <Box>
+        <Tooltip
+          label="Search user to chat"
+          hasArrow
+          placement="bottom-end"
+        >
+          <Button varient="ghost"></Button>
+        </Tooltip>
+      </Box>
     </>
   );
 }
