@@ -6,4 +6,4 @@ function MyChats() {
   )
 }
 
-export default MyChats
+export default MyChats;
