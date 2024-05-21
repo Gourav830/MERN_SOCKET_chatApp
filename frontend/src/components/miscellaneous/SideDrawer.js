@@ -14,12 +14,14 @@ import { Avatar } from "@chakra-ui/avatar";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import { ChatState } from "../../Contex/ChatProvider";
+import ProfileModel from "./ProfileModel";
 function SideDrawer() {
   const [search, setSearch] = useState("");
   const [searchResult, setSearchResult] = useState([]);
   const [loading, setLoading] = useState(false);
   const [loadingChat, setLoadingChat] = useState();
   const { user } = ChatState();
+  // const
   return (
     <>
       <Box
@@ -60,7 +62,9 @@ function SideDrawer() {
             </MenuButton>
 
             <MenuList>
-              <MenuItem>My Profile</MenuItem>
+              <ProfileModel user={user}>
+                {/* <MenuItem>My Profile</MenuItem> */}
+              </ProfileModel>
               <MenuDivider />
               <MenuItem>Logout</MenuItem>
             </MenuList>
