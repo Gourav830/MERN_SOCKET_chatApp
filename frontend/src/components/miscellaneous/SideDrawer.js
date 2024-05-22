@@ -41,8 +41,8 @@ function SideDrawer() {
   const {
     setSelectedChat,
     user,
-    notification,
-    setNotification,
+    // notification,
+    // setNotification,
     chats,
     setChats,
   } = ChatState();
@@ -142,7 +142,7 @@ function SideDrawer() {
           </Button>
         </Tooltip>
         <Text fontSize="2xl" fontFamily="Work sans">
-          Talk-A-Tive
+          ChatApp
         </Text>
         <div>
           <Menu>
@@ -153,7 +153,7 @@ function SideDrawer() {
               /> */}
               <BellIcon fontSize="2xl" m={1} />
             </MenuButton>
-            <MenuList pl={2}>
+            {/* <MenuList pl={2}>
               {!notification.length && "No New Messages"}
               {notification.map((notif) => (
                 <MenuItem
@@ -168,7 +168,7 @@ function SideDrawer() {
                     : `New Message from ${getSender(user, notif.chat.users)}`}
                 </MenuItem>
               ))}
-            </MenuList>
+            </MenuList> */}
           </Menu>
           <Menu>
             <MenuButton as={Button} bg="white" rightIcon={<ChevronDownIcon />}>
