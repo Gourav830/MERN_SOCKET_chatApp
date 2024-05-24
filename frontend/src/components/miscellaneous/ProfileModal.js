@@ -1,15 +1,5 @@
 import { ViewIcon } from "@chakra-ui/icons";
 import {
-  Button,
-  Center,
-  Icon,
-  IconButton,
-  Image,
-  Text,
-  useDisclosure,
-} from "@chakra-ui/react";
-import React from "react";
-import {
   Modal,
   ModalOverlay,
   ModalContent,
@@ -17,17 +7,24 @@ import {
   ModalFooter,
   ModalBody,
   ModalCloseButton,
+  Button,
+  useDisclosure,
+  IconButton,
+  Text,
+  Image,
 } from "@chakra-ui/react";
-const ProfileModel = ({ user, children }) => {
+
+const ProfileModal = ({ user, children }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+
   return (
     <>
       {children ? (
-        <span onClick={onOpen}></span>
+        <span onClick={onOpen}>{children}</span>
       ) : (
         <IconButton d={{ base: "flex" }} icon={<ViewIcon />} onClick={onOpen} />
       )}
-      <Modal size="lg" isOpen={isOpen} onClose={onClose} isCentered>
+      <Modal size="lg" onClose={onClose} isOpen={isOpen} isCentered>
         <ModalOverlay />
         <ModalContent h="410px">
           <ModalHeader
@@ -40,8 +37,8 @@ const ProfileModel = ({ user, children }) => {
           </ModalHeader>
           <ModalCloseButton />
           <ModalBody
-            d="flex"
-            flexDir="colum"
+           display="flex"
+            flexDir="column"
             alignItems="center"
             justifyContent="space-between"
           >
@@ -55,14 +52,11 @@ const ProfileModel = ({ user, children }) => {
               fontSize={{ base: "28px", md: "30px" }}
               fontFamily="Work sans"
             >
-              Email :{user.email}
+              Email: {user.email}
             </Text>
           </ModalBody>
-
           <ModalFooter>
-            <Button colorScheme="blue" mr={3} onClick={onClose}>
-              Close
-            </Button>
+            <Button onClick={onClose}>Close</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>
@@ -70,4 +64,4 @@ const ProfileModel = ({ user, children }) => {
   );
 };
 
-export default ProfileModel;
+export default ProfileModal;

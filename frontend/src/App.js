@@ -1,21 +1,15 @@
 import "./App.css";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import ChatPage from "./Pages/ChatPage";
-import HomePage from "./Pages/HomePage";
+import Homepage from "./Pages/Homepage";
+import { Route } from "react-router-dom";
+import Chatpage from "./Pages/Chatpage";
 
 function App() {
   return (
-    <Router>
-      <div className="App">
-        <Switch>
-          <Route path="/chats" component={ChatPage} />
-          <Route path="/" component={HomePage} />
-          {/* Add other Switch as needed */}
-        </Switch>
-      </div>
-    </Router>
+    <div className="App">
+      <Route path="/" component={Homepage} exact />
+      <Route path="/chats" component={Chatpage} />
+    </div>
   );
 }
 
 export default App;
-
